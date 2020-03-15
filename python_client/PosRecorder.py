@@ -19,8 +19,9 @@ def poll_pos(pos,):
             pos.put(iiwa.getEEFPos())
             time.sleep(1)
             
-        except:
-            print('an error happened in obtaining positions')
+        except Exception as E:
+            print('The following error happended in obtaining positions: \n')
+            print(E)
             return
     
     
@@ -29,13 +30,13 @@ def poll_pos(pos,):
 
 ip='172.31.1.147'
 iiwa=iiwaPy(ip)
-pos = LifoQueue
+pos = LifoQueue()
 t1 = Thread(target = poll_pos, args = (pos,))
 t1.daemon = True
 t1.start()
 total_pos = []
 while True:
-    user = input("S to Save, C to close")
+    user = input("S to Save, C to close \n")
     if user == "S" or user == "s":
         total_pos.append(pos.get())
     if user == "C" or user == "c":

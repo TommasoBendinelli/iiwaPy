@@ -18,8 +18,8 @@ def getDoubleFromString(message,size):
             x=float(strVal)
             doubleVals.append(x)
         except:
-            print('can not convert the following variable to float')
-            print(strVal)
+            #print('can not convert the following variable to float')
+            #print(strVal)
             sys.stdout.flush()
             
     return doubleVals
