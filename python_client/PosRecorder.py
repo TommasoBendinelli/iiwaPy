@@ -18,7 +18,10 @@ def poll_pos(pos,):
         try:
             pos.put(iiwa.getEEFPos())
             time.sleep(1)
-            
+        
+        except BrokenPipeError:
+            print("Connection closed")
+            return
         except Exception as E:
             print('The following error happended in obtaining positions: \n')
             print(E)
