@@ -16,6 +16,7 @@ class Getters:
 
     def send(self,data,size):
         data=data+'\n'
+        data = data.encode()
         self.mysoc.send(data)
         message=self.mysoc.receive()
         #print(message)

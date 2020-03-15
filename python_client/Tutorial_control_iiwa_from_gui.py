@@ -8,7 +8,7 @@ Updated 2019-Oct-07
 Example for controlling iiwa using GUI from an external PC
 """
 
-from Tkinter import *
+from tkinter import *
 from iiwaPy import iiwaPy
 import math
 
@@ -19,7 +19,7 @@ class App:
         self.IP_of_robot= StringVar()
         self.stateMessage=StringVar()
         self.connection_state=False
-        self.jText=[0 for x in xrange(7)]
+        self.jText=[0 for x in range(7)]
         self.commandsList=[]
         self.commandsAngleList=[]
             

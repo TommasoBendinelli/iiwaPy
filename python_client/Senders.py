@@ -4,8 +4,11 @@ Created on Tue Mar 27 17:36:18 2018
 
 @author: Mohammad SAFEEA
 """
+try:
+    from StringIO import StringIO ## for Python 2
+except ImportError:
+    from io import StringIO ## for Python 3
 
-import StringIO
 import math
 from GeneralPurpose import getDoubleFromString 
 
@@ -21,12 +24,12 @@ class Senders:
         return message
 
     def sendEEfPositions(self,x):
-        if(len(x)<>6):
+        if(len(x)!=6):
             print('Error in sender function [sendEEfPositions]')
             print('EEF position shall be an array of 6 elements')
             return
         num=10000
-        buff = StringIO.StringIO(2048)
+        buff = StringIO()
         buff.write('cArtixanPosition_')
         counter=0
         while counter<6:
@@ -38,12 +41,12 @@ class Senders:
         self.send(command)
         
     def sendJointsPositions(self,x):
-        if(len(x)<>7):
+        if(len(x)!=7):
             print('Error in sender function [sendJointsPositions]')
             print('Joint positions shall be an array of 7 elements')
             return
         num=10000
-        buff = StringIO.StringIO(2048)
+        buff = StringIO()
         buff.write('jp_')
         counter=0
         while counter<7:
@@ -55,12 +58,12 @@ class Senders:
         self.send(command)
         
     def sendJointsPositionsGetMTorque(self,x):
-        if(len(x)<>7):
+        if(len(x)!=7):
             print('Error in sender function [sendJointsPositionsGetMTorque]')
             print('Joint positions shall be an array of 7 elements')
             return
         num=10000
-        buff = StringIO.StringIO(2048)
+        buff = StringIO()
         buff.write('jpMT_')
         counter=0
         while counter<7:
@@ -72,12 +75,12 @@ class Senders:
         return getDoubleFromString(self.send(command),7)
         
     def sendJointsPositionsGetExTorque(self,x):
-        if(len(x)<>7):
+        if(len(x)!=7):
             print('Error in sender function [sendJointsPositionsGetExTorque]')
             print('Joint positions shall be an array of 7 elements')
             return
         num=10000
-        buff = StringIO.StringIO(2048)
+        buff = StringIO()
         buff.write('jpExT_')
         counter=0
         while counter<7:
@@ -89,12 +92,12 @@ class Senders:
         return getDoubleFromString(self.send(command),7)
         
     def sendJointsPositionsGetActualJpos(self,x):
-        if(len(x)<>7):
+        if(len(x)!=7):
             print('Error in sender function [sendJointsPositionsGetActualJpos]')
             print('Joint positions shall be an array of 7 elements')
             return
         num=10000
-        buff = StringIO.StringIO(2048)
+        buff = StringIO()
         buff.write('jpJP_')
         counter=0
         while counter<7:
@@ -106,12 +109,12 @@ class Senders:
         return getDoubleFromString(self.send(command),7)
         
     def sendCirc1FramePos(self,fpos):
-        if(len(fpos)<>6):
+        if(len(fpos)!=6):
             print('Error in sender function [sendCirc1FramePos]')
             print('Frame cooridnate is an array of 6 elements [x,y,z,alpha,beta,gamma] ')
             return
         num=10000
-        buff = StringIO.StringIO(2048)
+        buff = StringIO()
         buff.write('cArtixanPositionCirc1_')
         counter=0
         while counter<6:
@@ -123,12 +126,12 @@ class Senders:
         self.send(command)
         
     def sendCirc2FramePos(self,fpos):
-        if(len(fpos)<>6):
+        if(len(fpos)!=6):
             print('Error in sender function [sendCirc2FramePos]')
             print('Frame cooridnate is an array of 6 elements [x,y,z,alpha,beta,gamma] ')
             return
         num=10000
-        buff = StringIO.StringIO(2048)
+        buff = StringIO()
         buff.write('cArtixanPositionCirc2_')
         counter=0
         while counter<6:

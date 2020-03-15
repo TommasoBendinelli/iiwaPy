@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Gui Kuka Iiwa",
+            "type": "python",
+            "request": "launch",
+            "program": "python_client/Tutorial_control_iiwa_from_gui.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Pos Recorder Kuka",
+            "type": "python",
+            "request": "launch",
+            "program": "python_client/PosRecorder.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Learning queue",
+            "type": "python",
+            "request": "launch",
+            "program": "testingquee.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}

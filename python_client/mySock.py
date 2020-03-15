@@ -6,8 +6,11 @@ Updated on Mon Oct 21 15:51:03 2019
 """
 import socket
 import time
-import StringIO
-
+from io import BytesIO
+try:
+    from StringIO import StringIO ## for Python 2
+except ImportError:
+    from io import StringIO ## for Python 3
 
 class mySock:
     '''demonstration class only
@@ -30,7 +33,7 @@ class mySock:
         except:
             print('Error, could not establish a connection to the robot')
         time.sleep(1)
-        self.buff = StringIO.StringIO(2048)  
+        self.buff = StringIO()  
         # Update the transform of the TCP if one is specified
         flag=False
         for num in trans:
@@ -58,7 +61,7 @@ class mySock:
             self.buff.truncate(0)
             #print(command)
             try:
-                self.send(command)
+                self.send(command.encode())
                 returnAckNack=self.receive()
                 #print(returnAckNack)
                 if returnAckNack.find('done')==-1:
@@ -79,7 +82,7 @@ class mySock:
     def receive(self):
         returnVal=[]
         while True:
-            data = self.sock.recv(1)                     
+            data = self.sock.recv(1).decode()                     
             if (data=='\n'):break            
             self.buff.write(data)                       
         returnVal= self.buff.getvalue()     
@@ -90,6 +93,6 @@ class mySock:
         
     def close(self):
         endCommand='end\n'
-        self.sock.send(endCommand)
+        self.sock.send(endCommand.encode())
         time.sleep(1) # sleep for one seconds
         self.sock.close()
