@@ -1,8 +1,9 @@
 
 
+#This fork works with Python3, also it is possible to save positions coming from the robot using the terminal (see PosRecord)
 # iiwaPy
 
-A python librarry used to control KUKA iiwa robots, the 7R800 and the 14R820, from an external computer using python 2.7.
+A python library used to control KUKA iiwa robots, the 7R800 and the 14R820, from an external computer using python 2.7.
 
 Using the iiwaPy the utilizer can control the iiwa robot from his/her computer without a need for programming  the industerial manipulator.
 
